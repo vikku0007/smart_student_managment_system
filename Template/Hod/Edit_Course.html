@@ -1,0 +1,33 @@
+{% extends 'base.html'%}
+{% block content %}
+<div class="page-wrapper">
+   <div class="content container-fluid">
+      <div class="page-header">
+         <div class="row align-items-center">
+            <div class="col">
+               <form method="POST" action="{% url 'update_course' %}">
+                  {% csrf_token%}
+                  <h3 class="page-title">Edit Course</h3>
+                  <ul class="breadcrumb">
+                     <li class="breadcrumb-item"><a href="students.html">Students</a></li>
+                     <li class="breadcrumb-item active">Edit Course</li>
+                  </ul>
+            </div>
+         </div>
+      </div>
+      <div class="col-12 col-sm-6">
+      <div class="form-group">
+      <label> Update Coures</label>
+      <input type="text" class="form-control" name="name" value = "{{course.name}}" required >
+      <input type="text" class="form-control" name="course_id" value = "{{course.id}}" hidden >
+      </div>
+      </div>
+      <div class="col-12">
+      <button type="submit" class="btn btn-primary">Update Course</button>
+      </div>
+   </div>
+   </form>
+</div>
+
+      <t>{% endblock %}</t>
+

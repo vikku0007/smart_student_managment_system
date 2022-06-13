@@ -23,8 +23,8 @@ class Course(models.Model):
         return self.name
     
 class Session_Year(models.Model):
-    session_start = models.CharField(max_length=100)
-    session_end = models.CharField(max_length=100)
+    session_start = models.CharField(max_length=1000)
+    session_end = models.CharField(max_length=1000)
 
 
 class Student(models.Model):
@@ -41,3 +41,23 @@ class Student(models.Model):
 
     def __str__(self):
         return self.admin.first_name + " " + self.admin.last_name 
+
+class Staff (models.Model):
+    admin = models.OneToOneField(CustomUser,on_delete=models.CASCADE)
+    address = models.TextField(100)
+    gender = models.CharField(max_length=10)
+    create_at = models.DateTimeField(auto_now_add =True)
+    update_at =  models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.admin.username
+class Subjects(models.Model):
+    name = models.CharField (max_length=100)
+    course = models.ForeignKey(Course,on_delete=models.CASCADE)
+    staff = models.ForeignKey(Staff,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+
+

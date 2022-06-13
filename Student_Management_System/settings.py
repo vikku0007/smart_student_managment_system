@@ -38,6 +38,7 @@ INSTALLED_APPS = ['Student_app',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'active_link',
 ]
 
 MIDDLEWARE = [

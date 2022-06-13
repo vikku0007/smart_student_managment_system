@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+    
+    <div class="page-header">
+    <div class="row align-items-center">
+    <div class="col">
+    <form method="POST" action="{% url 'update_subjects'%}" >
+   {% csrf_token%}
+    <h3 class="page-title">Edit_Subjects</h3>
+    <ul class="breadcrumb">
+    <li class="breadcrumb-item"><a href="subjects.html">Subjects</a></li>
+    <li class="breadcrumb-item active">Edit_Subjects</li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    
+    <div class="row">
+    <div class="col-sm-12">
+    <div class="card">
+    <div class="card-body">
+ 
+    <div class="row">
+    <div class="col-12">
+    <h5 class="form-title"><span>Subject Information</span></h5>
+    </div>
+    <div class="col-12 col-sm-6">
+    <div class="form-group">
+    <label>Subject Name</label>
+    <input type="text" class="form-control" name="subjects_name" value="{{subjects.name}}" required>
+    <input type="text" class="form-control" name="subjects_id" value = "{{subjects.id}}" hidden >
+    </div>
+    </div>
+    <div class="col-12 col-sm-6">
+   
+      <label>Course</label>
+      <select class="form-control" name="course_id" required>
+         <option>Select Course</option>
+         {% for i in course %}
+         <option value="{{i.id}}">{{i.name}}</option>
+         {% endfor %}
+      </select>
+    </div>
+    <div class="col-12 col-sm-6">
+      <label>Staff</label>
+      <select class="form-control" name="staff_id" required>
+         <option>Select Staff</option>
+         {% for i in staff %}
+         <option value="{{i.id}}">{{i.admin.first_name}}&nbsp;{{i.admin.last_name}}</option>
+         {% endfor %}
+      </select>
+    <div class="col-12 mt-3">
+    <button type="submit" class="btn btn-primary">Update Subjects</button>
+    </div>
+    </div>
+    </form>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+
+
+{% endblock%}
